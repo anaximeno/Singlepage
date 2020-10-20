@@ -68,12 +68,12 @@ $(document).ready(function(){
 
 
 /* Slide Animations */
-var slideIndex = 1, plus;
+var slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
-  plus = true
+  clearTimeout(m);
   showSlides(slideIndex += n);
 }
 
@@ -85,6 +85,8 @@ function currentSlide(n) {
 var slideIndex = 0;
 showSlides()
 
+var m;
+
 function showSlides() {
   var i;
   var slides = document.getElementsByClassName("mySlides");
@@ -94,5 +96,5 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}
   slides[slideIndex -1].style.display = "block";
-  setTimeout(showSlides, 2000)
+  m = setTimeout(showSlides, 2000);
 }
