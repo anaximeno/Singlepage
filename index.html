@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="./index.css">
         <script src="./js/index.js"></script>
     </head>
-    <!--neck-->
+    <!--neck; by Anaxímeno Brito-->
     <body>
         <div class="fullpage">
             <!--header-->
@@ -21,7 +21,7 @@
                     <span id="logo">AX2MK</span>
                     <div class="nav">
                         <a href="#init">Início</a>
-                        <a href="#assunto-1">Some text</a>
+                        <a href="#assunto-1">Texto Aleatório</a>
                         <a href="#assunto-2">Jimbei</a>
                         <a href="#about">Sobre</a>
                     </div>
@@ -119,7 +119,7 @@
             currentSlide(1)
 
             $("document").ready(function(){
-                $(".dot").hide()  // uneeded already
+                $(".dot").hide();  // uneeded already
 
                 $("#bulb1").click(function(){
                 gsap.from("#bulb1", {y: 25, duration: 0.2, ease: "ease"});
@@ -127,6 +127,7 @@
                 $("#bulb2").click(function(){
                 gsap.from("#bulb2", {y: 25, duration: 0.2, ease: "ease"});
                 });
+		$(".mySlides .text").hide();
             });
         </script>
     </body>

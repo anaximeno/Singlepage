@@ -15,14 +15,15 @@ $(document).ready(function(){
     var hdown = $(".header-down");
     var fdown = $(".footer-down");
     var hdr = $(".header");
-    var fdr = $(".footer")
+    var fdr = $(".footer");
 
     bulbs.click(function() {
         if(day){  // changes to night mode
             day = false
 
             for(var i = 0; i < bulbs.length; i++) {
-              bls[i].src = "./imagens/bulboff.svg"
+              bls[i].src = "./imagens/bulboff.svg";
+	      bls[i].title = "Go to Day Mode";
             }
             hf.css("background-color", "#222");
             hf.css("color", "white");
@@ -43,7 +44,8 @@ $(document).ready(function(){
             day = true
 
             for(var i = 0; i < bulbs.length; i++) {
-              bls[i].src = "./imagens/bulbon.svg"
+              bls[i].src = "./imagens/bulbon.svg";
+	      bls[i].title = "Go Night Mode";
             }
             hf.css("background-color", "white");
             hf.css("color", "#232323");
