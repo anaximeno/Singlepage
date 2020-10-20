@@ -38,7 +38,7 @@ $(document).ready(function(){
             abt.css("color", "white");
             nav.css("color", "white");
             $("#assunto-2 .text").css("color", "#232323");
-            body.css("background-color", "#333");
+            body.css("background-image", "linear-gradient(60deg, #29323c 0%, #485563 100%)");
         } else{ // changes to day mode
             day = true
 
@@ -59,7 +59,7 @@ $(document).ready(function(){
             abt.css("color", "#232323");
             nav.css("color", "#232323");
             $("#assunto-2 .text").css("color", "white");
-            body.css("background-color", "#fff");
+            body.css("background-image", "none");
         }
     });
 })
