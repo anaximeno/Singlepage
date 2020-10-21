@@ -6,11 +6,46 @@
         <title>One page site</title>
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@600&family=Permanent+Marker&family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
-        <script src="./js/gsap.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
-        <script src="./js/jquery.js"></script>
         <link rel="stylesheet" href="./index.css">
+        <script src="./js/gsap.min.js"></script>
+        <script src="./js/jquery.js"></script>
         <script src="./js/index.js"></script>
+        <style type="text/css">
+            @media screen and (max-width: 1000px){
+                .next, .prev{
+                    top: 35%;
+                }
+            }
+            @media screen and (max-width: 660px){
+                .header, .footer{
+                    width: 100%;
+                }
+                .fullbody{
+                    width: 100%;
+                }
+                .next{
+                    right: 0;
+                }
+            }
+            @media screen and (max-width: 530px){
+                .nav{
+                    margin-top: 0px;
+                    width: 100%;
+                }
+                .header{
+                    flex-direction: column;
+                    align-content: center;
+                    justify-content: center;
+                }
+                #logo{
+                    text-align: center;
+                }
+                .bulbs img{
+                    top: 55px;
+                }
+            }
+        </style>
     </head>
     <!--neck; by Anaxímeno Brito-->
     <body>
@@ -119,15 +154,14 @@
             currentSlide(1)
 
             $("document").ready(function(){
-                $(".dot").hide();  // uneeded already
-
+/*
                 $("#bulb1").click(function(){
                 gsap.from("#bulb1", {y: 25, duration: 0.2, ease: "ease"});
                 });
                 $("#bulb2").click(function(){
                 gsap.from("#bulb2", {y: 25, duration: 0.2, ease: "ease"});
-                });
-		$(".mySlides .text").hide();
+                });*/
+		$(".mySlides .text, .dot").hide();
             });
         </script>
     </body>
