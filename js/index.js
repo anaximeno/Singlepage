@@ -1,5 +1,35 @@
+// Next/previous controls
+function plusSlides(n) {
+  clearTimeout(m);
+  slideIndex = slideIndex + n;
+  showSlides(slideIndex);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(n);
+}
+
+var m, slideIndex = 0;
+
+function showSlides() {
+  var i, s;
+
+  var slides = $(".mySlides");
+
+  slides.css("display", "none");
+
+  slideIndex++;
+  if(slideIndex > slides.length) {slideIndex = 1}
+  s = slideIndex - 1
+  slides.eq(s).css("display", "block");
+
+  m = setTimeout(showSlides, 8000);
+}
+
 $(document).ready(function(){
-    // theme begins in light mode
+
+               /* Night/Day mode */
     day = true;
 
     var logo = $('#logo');  // the logo
@@ -64,37 +94,4 @@ $(document).ready(function(){
             body.css("background-image", "none");
         }
     });
-})
-
-
-/* Slide Animations */
-var slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  clearTimeout(m);
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-var slideIndex = 0;
-showSlides()
-
-var m;
-
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex -1].style.display = "block";
-  m = setTimeout(showSlides, 8000);
-}
+});
