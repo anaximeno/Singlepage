@@ -231,18 +231,16 @@ img{
 
 /* Bulbs */
 .bulbs{
-  opacity: 0.7;
   z-index: 1;
 }
-.bulbs:hover{
-  opacity: 1;
-}
 .bulbs img{
+  opacity: 0.7;
   width: 50px;
   position: fixed;
   top: 30px;
 }
 .bulbs img:hover{
+  opacity: 1;
   cursor: pointer;
 }
 #bulb1{
