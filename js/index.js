@@ -35,13 +35,13 @@ $(document).ready(function(){
     var logo = $('#logo');  // the logo
     var bulbs = $('.bulbs img');
     var bls = document.querySelector(".bulbs").querySelectorAll("img");
-    var hf = $(".s-20");  // header & footer
     var bd = $(".fullbody");  // page body
     var nav = $(".nav");  // navegator
     var assunto1 = $("#assunto-1");
     var abt = $("#about");
     var it = $("#init .text");
     var body = $("body");
+    var hf = $(".header, .footer, .footer-down, .header-down");  // header & footer
     var hdown = $(".header-down");
     var fdown = $(".footer-down");
     var hdr = $(".header");
@@ -58,9 +58,6 @@ $(document).ready(function(){
         hf.css("color", "white");
         hdr.css("box-shadow", "2px -1px 19px 9px rgba(0,0,0,0.7)");
         fdr.css("box-shadow", "2px 4px 19px 9px rgba(0,0,0,0.7)");
-        hdown.css("border-bottom", "none");
-        fdown.css("border-top", "none");
-        hdown.css("background-color", "#222");
         it.css("color", "#232323");
         logo.css("color", "white");
         bd.css("background-color", "#232323");
@@ -82,9 +79,6 @@ $(document).ready(function(){
         hf.css("color", "#232323");
         hdr.css("box-shadow", "none");
         fdr.css("box-shadow", "none");
-        hdown.css("border-bottom", "2px solid #ffd900");
-        hdown.css("background-color", "white");
-        fdown.css("border-top", "2px solid #ffd900");
         it.css("color", "white");
         logo.css("color", "#232323");
         bd.css("background-color", "white");
@@ -92,7 +86,7 @@ $(document).ready(function(){
         abt.css("color", "#232323");
         nav.css("color", "#232323");
         $("#assunto-2 .text").css("color", "white");
-        body.css("background-image", "none");
+        body.css("background-image", "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)");
     }
 
     var d = new Date();
