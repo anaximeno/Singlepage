@@ -30,18 +30,18 @@ function showSlides() {
 
 $(document).ready(function(){
 
-        /* Night/Day mode */
+    /* Night/Day mode */
 
-    var logo = $('#logo');  // the logo
+    var logo = $('#logo');
     var bulbs = $('.bulbs img');
     var bls = document.querySelector(".bulbs").querySelectorAll("img");
-    var bd = $(".fullbody");  // page body
-    var nav = $(".nav");  // navegator
+    var bd = $(".fullbody");
+    var nav = $(".nav");
     var assunto1 = $("#assunto-1");
     var abt = $("#about");
     var it = $("#init .text");
     var body = $("body");
-    var hf = $(".header, .footer, .footer-down, .header-down");  // header & footer
+    var hf = $(".header, .footer, .footer-down, .header-down");
     var hdown = $(".header-down");
     var fdown = $(".footer-down");
     var hdr = $(".header");
@@ -54,6 +54,7 @@ $(document).ready(function(){
           bls[i].src = "./imagens/bulboff.svg";
           bls[i].title = "Go to Day Mode";
         }
+
         hf.css("background-color", "#222");
         hf.css("color", "white");
         hdr.css("box-shadow", "2px -1px 19px 9px rgba(0,0,0,0.7)");
@@ -75,6 +76,7 @@ $(document).ready(function(){
           bls[i].src = "./imagens/bulbon.svg";
           bls[i].title = "Go to Night Mode";
         }
+
         hf.css("background-color", "white");
         hf.css("color", "#232323");
         hdr.css("box-shadow", "none");
@@ -86,7 +88,7 @@ $(document).ready(function(){
         abt.css("color", "#232323");
         nav.css("color", "#232323");
         $("#assunto-2 .text").css("color", "white");
-        body.css("background-image", "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)");
+        body.css("background-image", "none");
     }
 
     var d = new Date();
@@ -98,10 +100,7 @@ $(document).ready(function(){
     else day = true;
 
     bulbs.click(function() {
-        if(day){  // changes to night mode
-            nightMode();
-        } else{ // changes to day mode
-            dayMode();
-        }
+        if(day) nightMode();  // change to night mode
+        else dayMode();       // change to day mode
     });
 });

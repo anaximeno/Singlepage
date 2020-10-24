@@ -30,6 +30,7 @@ body{
   margin-right: auto;
   display: block;
   box-shadow: 2px -1px 19px 9px rgba(0,0,0,0.7);
+  background-color: #fff;
 }
 .nav{
   color: #232323;
@@ -62,6 +63,9 @@ body{
   margin-right: auto;
   font-size: 1.15em;
   font-family: 'Acme', sans-serif;
+}
+.footer-down, .header-down, .header, .footer{
+  background-color: #fefefe;
 }
 .nav{
     display: flex;
