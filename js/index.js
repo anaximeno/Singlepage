@@ -58,12 +58,12 @@ $(document).ready(() => {
         day = day ? nightMode() : dayMode();
     });
 
-    function change_bulbs(src, ttextsle)
+    function change_bulbs(src, title)
     {
         var bls = document.querySelector(".bulbs").querySelectorAll("img");
         for(var i = 0; i < bulbs.length; i++) {
             bls[i].src = src;
-            bls[i].ttextsle = ttextsle;
+            bls[i].ttextsle = title;
         }
     }
 
