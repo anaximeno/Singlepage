@@ -63,7 +63,7 @@ $(document).ready(() => {
         var bls = document.querySelector(".bulbs").querySelectorAll("img");
         for(var i = 0; i < bulbs.length; i++) {
             bls[i].src = src;
-            bls[i].ttextsle = title;
+            bls[i].title = title;
         }
     }
 
