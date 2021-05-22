@@ -154,6 +154,22 @@
             </div>
         </div>
         <script>
+            /* New Slide functions */
+            var slides = [ // TODO: continue this x
+                {
+                    img: "./imagens/black_moto.jpg",
+                    text: "The Classical Moto.."
+                },
+                {
+                    img: "./imagens/mountain_bike.jpg",
+                    text: "Cross Bike!"
+                },
+                {
+                    img: "./imagens/red_moto.jpg",
+                    text: "Red in the Moto."
+                }
+            ]
+
             $(document).ready(() => {
                 /* Slide Animations */
                 function NPplaces() {
@@ -170,6 +186,7 @@
                 var hour = d.getHours();
                 var day = (hour >= 18 || hour < 6) ? false : true;
 
+                // TODO: change this animations with css div changer
                 var logo = $('#logo');
                 var bulbs = $('.bulbs img');
                 var centralbox = $(".fullbody");
