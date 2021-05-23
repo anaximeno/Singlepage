@@ -30,7 +30,7 @@ function SlideShower(slides, changetime, reference)
         slide_num.innerHTML = (this.current_index+1) + '/' + this.slides.length;
         this.go_next();
     }
-    this.animate_slides = async function() {
+    this.animate_slides = async () => {
         do {
             this.show();
             await sleep(this.changetime);
