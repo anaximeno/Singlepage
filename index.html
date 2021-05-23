@@ -11,10 +11,10 @@
         <link rel="icon" type="image/png" sizes="32x32" href="favs/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="favs/favicon-16x16.png">
         <link rel="manifest" href="favs/site.webmanifest">
-        <link rel="stylesheet" href="./index.css">
-        <script src="./js/gsap.min.js"></script>
-        <script src="./js/jquery.js"></script>
-        <script src="./js/index.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="js/gsap.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/index.js"></script>
         <style type="text/css">
             @media screen and (max-width: 660px){
                 .header, .footer{
@@ -58,51 +58,46 @@
                     <span id="logo">AX2MK</span>
                     <div class="nav">
                         <a href="#init">Início</a>
-                        <a href="#assunto-1">Texto Aleatório</a>
+                        <a href="#assunto-1">Aleatório</a>
                         <a href="#assunto-2">Jimbei</a>
                         <a href="#about">Sobre</a>
                     </div>
                 </div>
-            </div>
-            <div class="bulbs">
-                <img src="./imagens/bulbon.svg" alt="" id="bulb1" title="Change Night/Mode">
-                <img src="./imagens/bulbon.svg" alt="" id="bulb2" title="Change Night/Mode">
+                <img id="sun-moon" src="imagens/sun.svg" alt="sun" srcset="">
             </div>
             <!--body of the page-->
             <div class="fullbody">
                 <!-- Slideshow Container -->
                 <div id="init">
-                    <!-- TODO: Improve this -->
-                    <div id="slideshow-container"> 
-                        <div class="mySlides fade">
-                            <div class="numbertext">1 / 3</div>
-                            <img src="./imagens/black_moto.jpg" width="100%">
-                            <div class="text">The Classical Moto..</div>
-                        </div>
-    
-                        <div class="mySlides fade">
-                            <div class="numbertext">2 / 3</div>
-                            <img src="./imagens/mountain_bike.jpg" width="100%">
-                            <div class="text">Cross Bike!</div>
-                        </div>
-                        
-                        <div class="mySlides fade">
-                            <div class="numbertext">3 / 3</div>
-                            <img src="./imagens/red_moto.jpg" width="100%">
-                            <div class="text">Red in the Moto.</div>
-                        </div>
-    
-                        <!--next previous buttons -->
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    </div>
-    
-                    <div style="text-align: center;">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
+                    <div class="slideshow">
+                        <div id="slide_num" class="numbertext"></div>
+                        <img src="imagens/african.png" alt="slide_image" id="slide_img" width="100%" max-height="100%">
+                        <div id="slide_text">I am african with pride</div>
                     </div>
                 </div>
+
+                <script>
+                    var slides = [
+                        {
+                            src: "imagens/african.png",
+                            text: "I am african with pride"
+                        },
+                        {
+                            src: "imagens/updategrade.png",
+                            text: "Up to the date and Up the grade"
+                        },
+                        {
+                            src: "imagens/playpretend.jpeg",
+                            text: "Use the play pretend bunny"
+                        },
+                        {
+                            src: "imagens/archpacman.png",
+                            text: "Blue Pacamano from arch"
+                        }
+                    ];
+                    var slideshow = new SlideShower(slides, 4000, {image: 'slide_img', text: 'slide_text', num: 'slide_img'});
+                    slideshow.animate_slides();
+                </script> 
                 
 
                 <div id="assunto-1">
@@ -113,7 +108,16 @@
                     Sed non interdum est, ac egestas ligula. Cras quis nisi in mi rutrum placerat. Proin porttitor nisi vel semper scelerisque. Morbi accumsan molestie feugiat. Pellentesque malesuada luctus mi sed dignissim. Integer semper orci at sem porttitor, varius hendrerit turpis pretium. Suspendisse a nibh dignissim, accumsan lectus at, pellentesque turpis. Nam ut lacus finibus, consequat erat at, sagittis nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
 
                     Donec consectetur, ligula eget ornare malesuada, turpis metus tempus tortor, quis fringilla orci quam a lectus. Curabitur at rhoncus nulla. Nam neque libero, ultricies vel eleifend quis, varius non odio. Ut faucibus, tellus faucibus vestibulum pretium, felis lorem efficitur metus, quis tincidunt justo sem a tortor. Cras eu consectetur eros, eu pretium ante. Morbi hendrerit lectus lectus, sed malesuada eros luctus eget. In rutrum volutpat ex et pulvinar.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae condimentum purus. Donec euismod dignissim enim, et sollicitudin lacus congue ut. Maecenas mauris turpis, euismod nec sollicitudin nec, bibendum laoreet velit. Mauris vel sapien eget nibh fringilla faucibus. Nulla ullamcorper venenatis imperdiet. Vivamus ac euismod sapien. Donec tincidunt consequat suscipit.
 
+                    Sed non interdum est, ac egestas ligula. Cras quis nisi in mi rutrum placerat. Proin porttitor nisi vel semper scelerisque. Morbi accumsan molestie feugiat. Pellentesque malesuada luctus mi sed dignissim. Integer semper orci at sem porttitor, varius hendrerit turpis pretium. Suspendisse a nibh dignissim, accumsan lectus at, pellentesque turpis. Nam ut lacus finibus, consequat erat at, sagittis nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+                    Donec consectetur, ligula eget ornare malesuada, turpis metus tempus tortor, quis fringilla orci quam a lectus. Curabitur at rhoncus nulla. Nam neque libero, ultricies vel eleifend quis, varius non odio. Ut faucibus, tellus faucibus vestibulum pretium, felis lorem efficitur metus, quis tincidunt justo sem a tortor. Cras eu consectetur eros, eu pretium ante. Morbi hendrerit lectus lectus, sed malesuada eros luctus eget. In rutrum volutpat ex et pulvinar.
+
+                    Phasellus vel justo quam. Pellentesque lacinia ante non congue bibendum. Cras pharetra, ante ac blandit porta, tortor orci dignissim neque, id congue tellus nunc nec augue. Phasellus at erat vel nisi mollis interdum. Maecenas a pulvinar nibh. Quisque egestas, ligula in malesuada pulvinar, neque lacus tempor ligula, vel lobortis orci lectus sit amet lorem. Cras posuere nisl ac sapien luctus, sit amet porta massa posuere. Phasellus sodales rutrum ipsum, ut convallis lacus fringilla et. Aliquam tincidunt varius fermentum laoreet ipsum maecenas.
+
+                    Donec consectetur, ligula eget ornare malesuada, turpis metus tempus tortor, quis fringilla orci quam a lectus. Curabitur at rhoncus nulla. Nam neque libero, ultricies vel eleifend quis, varius non odio. Ut faucibus, tellus faucibus vestibulum pretium, felis lorem efficitur metus, quis tincidunt justo sem a tortor. Cras eu consectetur eros, eu pretium ante. Morbi hendrerit lectus lectus, sed malesuada eros luctus eget. In rutrum volutpat ex et pulvinar.
+                     Maecenas luctus tellus nisi, vitae elementum orci malesuada a. Morbi lacus turpis, vulputate sed pretium vel, maximus a odio. Praesent nunc mauris, varius sit amet tincidunt quis, interdum nec quam. Donec ac urna ullamcorper, faucibus augue vel, aliquam dui. Quisque vitae rhoncus sem, et blandit ipsum. Nunc at luctus magna. Curabitur quam tortor, scelerisque id turpis at, venenatis feugiat erat. Pellentesque in justo imperdiet, congue lectus et, feugiat ligula. Donec egestas arcu nunc, non commodo arcu rhoncus vel. Sed rutrum, felis non interdum lacinia, turpis erat tempor ex, quis convallis neque libero id enim. Cras vestibulum mollis ex. Phasellus quis nunc non nisi consectetur lacinia et nec nulla. Quisque interdum ultrices luctus
                     Phasellus vel justo quam. Pellentesque lacinia ante non congue bibendum. Cras pharetra, ante ac blandit porta, tortor orci dignissim neque, id congue tellus nunc nec augue. Phasellus at erat vel nisi mollis interdum. Maecenas a pulvinar nibh. Quisque egestas, ligula in malesuada pulvinar, neque lacus tempor ligula, vel lobortis orci lectus sit amet lorem. Cras posuere nisl ac sapien luctus, sit amet porta massa posuere. Phasellus sodales rutrum ipsum, ut convallis lacus fringilla et. Aliquam tincidunt varius fermentum laoreet ipsum maecenas.
 
                     Donec consectetur, ligula eget ornare malesuada, turpis metus tempus tortor, quis fringilla orci quam a lectus. Curabitur at rhoncus nulla. Nam neque libero, ultricies vel eleifend quis, varius non odio. Ut faucibus, tellus faucibus vestibulum pretium, felis lorem efficitur metus, quis tincidunt justo sem a tortor. Cras eu consectetur eros, eu pretium ante. Morbi hendrerit lectus lectus, sed malesuada eros luctus eget. In rutrum volutpat ex et pulvinar.
@@ -121,7 +125,7 @@
                     </div>
                 </div>
                 <div id="assunto-2">
-                    <img src="imagens/bag.png" alt="Jimbei">
+                    <img id="slide_src" src="imagens/jimbei.jpeg" alt="Jimbei">
                 </div>
                 <div id="about">
                     <h2>WHAT ABOUT ONE GLASS OF WHATEVER?</h2>
@@ -145,6 +149,18 @@
 
                     Muctus mi sed dignissim. Integer semper orci at sem porttitor, varius hendrerit turpis pretium. Suspendisse a nibh dignissim, accumsan lectus at, pellentesque turpis. Nam ut lacus finibus, consequat erat at, sagittis nulla. Pellentesque.
                     </p>
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae condimentum purus. Donec euismod dignissim enim, et sollicitudin lacus congue ut. Maecenas mauris turpis, euismod nec sollicitudin nec, bibendum laoreet velit. Mauris vel sapien eget nibh fringilla faucibus. Nulla ullamcorper venenatis imperdiet. Vivamus ac euismod sapien. Donec tincidunt consequat suscipit.
+
+                    Sed non interdum est, ac egestas ligula. Cras quis nisi in mi rutrum placerat. Proin porttitor nisi vel semper scelerisque. Morbi accumsan molestie feugiat. Pellentesque malesuada luctus mi sed dignissim. Integer semper orci at sem porttitor, varius hendrerit turpis pretium. Suspendisse a nibh dignissim, accumsan lectus at, pellentesque turpis. Nam ut lacus finibus, consequat erat at, sagittis nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+                    Donec consectetur, ligula eget ornare malesuada, turpis metus tempus tortor, quis fringilla orci.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae condimentum purus. Donec euismod dignissim enim, et sollicitudin lacus congue ut. Maecenas mauris turpis, euismod nec sollicitudin nec, bibendum laoreet velit. Mauris vel sapien eget nibh fringilla faucibus. Nulla ullamcorper venenatis imperdiet. Vivamus ac euismod sapien. Donec tincidunt consequat suscipit.
+
+                    Muctus mi sed dignissim. Integer semper orci at sem porttitor, varius hendrerit turpis pretium. Suspendisse a nibh dignissim, accumsan lectus at, pellentesque turpis. Nam ut lacus finibus, consequat erat at, sagittis nulla. Pellentesque.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae condimentum purus. Donec euismod dignissim enim, et sollicitudin lacus congue ut. Maecenas mauris turpis, euismod nec sollicitudin nec, bibendum laoreet velit. Mauris vel sapien eget nibh fringilla faucibus. Nulla ullamcorper venenatis imperdiet. Vivamus ac euismod sapien. Donec tincidunt consequat suscipit.
+
+                    Muctus mi sed dignissim. Integer semper orci at sem porttitor, varius hendrerit turpis pretium. Suspendisse a nibh dignissim, accumsan lectus at, pellentesque turpis. Nam ut lacus finibus, consequat erat at, sagittis nulla. Pellentesque.
+                    </p>
                 </div>
             </div>
             <div class="footer-down s-20">
@@ -155,43 +171,16 @@
         </div>
         <script>
             /* New Slide functions */
-            var slides = [ // TODO: continue this x
-                {
-                    img: "./imagens/black_moto.jpg",
-                    text: "The Classical Moto.."
-                },
-                {
-                    img: "./imagens/mountain_bike.jpg",
-                    text: "Cross Bike!"
-                },
-                {
-                    img: "./imagens/red_moto.jpg",
-                    text: "Red in the Moto."
-                }
-            ]
-
             $(document).ready(() => {
-                /* Slide Animations */
-                function NPplaces() {
-                    slideImgH = $("#slideshow-container").height();
-                    headerH = $(".header").height();
-
-                    var t =  (slideImgH / 2 + headerH) + "px";
-
-                    $(".prev, .next").css("top", t);
-                }
-                /* endl */
-        
                 var d = new Date();
                 var hour = d.getHours();
                 var day = (hour >= 18 || hour < 6) ? false : true;
 
                 // TODO: change this animations with css div changer
                 var logo = $('#logo');
-                var bulbs = $('.bulbs img');
                 var centralbox = $(".fullbody");
                 var nav = $(".nav");
-                var assunto1 = $("#assunto-1");
+                var assunto1 = $("#assunto-1, #slide_text");
                 var about = $("#about");
                 var texts = $("#intexts .text");
                 var body = $("body");
@@ -199,30 +188,12 @@
                 var header = $(".header");
                 var footer = $(".footer");
 
+                if (!day) 
+                    nightMode();
 
-                // TODO: show an animation before site end charging.
-                window.addEventListener('load', () => {
-                    if (!day) 
-                        nightMode();
-
-                    showSlides(slideIndex);
-                    NPplaces();
-                    $(".mySlides .text, .dot").hide();
-                });
-                window.addEventListener("resize", NPplaces);
-
-
-                bulbs.click(() => {
+                $('#sun-moon').click(() => {
                     day = day ? nightMode() : dayMode();
                 });
-
-
-                function change_bulbs(src)
-                {
-                    var bls = document.querySelector(".bulbs").querySelectorAll("img");
-                    for (let i = 0 ; i < bls.length ; ++i)
-                        bls[i].src = src;
-                }
 
 
                 function change_colors(colors)
@@ -244,7 +215,7 @@
 
                 function nightMode()
                 {
-                    change_bulbs("./imagens/bulboff.svg");
+                    document.getElementById('sun-moon').src = 'imagens/sun.svg';
                     change_colors({
                         c1: "#fff",
                         c2: "#191919",
@@ -259,7 +230,7 @@
 
                 function dayMode()
                 {
-                    change_bulbs("./imagens/bulbon.svg");
+                    document.getElementById('sun-moon').src = 'imagens/moon.svg';
                     change_colors({
                         c1: "#191919",
                         c2: "#fff",
