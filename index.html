@@ -51,7 +51,7 @@
             }
         </style>
     </head>
-    <!--neck; by Anaxímeno Brito-->
+    <!--neck: by Anaxímeno Brito-->
     <body>
         <div class="fullpage">
             <!--header-->
@@ -192,25 +192,24 @@
                     footer = $(".footer"),
                     sun_moon = $('#sun-moon');
 
-                if (!day) 
-                    nightMode();
-                
-                    
-                async function theme_animation()
-                {
-                    gsap.to('#sun-moon', {duration: .2, opacity: 0});
-                    gsap.to('#sun-moon', {duration: .2, x: "50px", y: "-50px", ease: "circ.out"});
 
-                    await sleep(200);
+                if (!day) {
+                    sun_moon.attr('src', 'imagens/moon.svg');
+                    nightMode();      
+                }
+
+
+                sun_moon.click(async () => {
+                    gsap.to('#sun-moon', {duration: .15, opacity: 0});
+                    gsap.to('#sun-moon', {duration: .19, x: "50px", y: "-50px", ease: "circ.out"});
+
+                    await sleep(180);
                     sun_moon.attr('src', day ? 'imagens/moon.svg' : 'imagens/sun.svg');
 
-                    gsap.to('#sun-moon', {duration: .2, opacity: 1, delay: 0.2});
-                    gsap.to('#sun-moon', {duration: .2, x: "0px", y: "0px", delay: 0.2, ease: "circ.out"});
-                }
-                    
-                sun_moon.click(async () => {
-                    theme_animation();
-                    await sleep(390);
+                    gsap.to('#sun-moon', {duration: .17, opacity: 1, delay: 0.19});
+                    gsap.to('#sun-moon', {duration: .19, x: "0px", y: "0px", delay: 0.19, ease: "circ.out"});
+
+                    await sleep(190);
                     day = day ? nightMode() : dayMode();
                 });
 
@@ -240,8 +239,7 @@
                         c3: "#121212",
                         background: "#101010",
                         shadow1: "2px -1px 19px 9px rgba(0,0,0,0.9)",
-                        shadow2: "2px 4px 19px 9px rgba(0,0,0,0.9)"
-                    });
+                        shadow2: "2px 4px 19px 9px rgba(0,0,0,0.9)"});
                     return false;
                 }
 
@@ -254,8 +252,7 @@
                         c3: "#fff",
                         background: "#fff",
                         shadow1: "none",
-                        shadow2: "none"
-                    });
+                        shadow2: "none"});
                     return true;
                 }
             });
