@@ -10,11 +10,11 @@
         <link rel="apple-touch-icon" sizes="180x180" href="favs/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="favs/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="favs/favicon-16x16.png">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="manifest" href="favs/site.webmanifest">
-        <link rel="stylesheet" href="style.css">
-        <script src="js/gsap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
         <script src="index.js"></script>
+        <link rel="stylesheet" href="style.css">
         <style type="text/css">
             @media screen and (max-width: 660px){
                 .header, .footer{
@@ -168,7 +168,7 @@
             </div>
             <div class="footer-down s-20">
                 <div class="footer">
-                    A Single Page made by &copy; Anaxímeno Brito. 
+                    A Single Page made by: Anaxímeno Brito &copy; 2020 - 2021 
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@
                     nav = $(".nav"),
                     assunto1 = $("#assunto-1, #slide_text"),
                     about = $("#about"),
-                    texts = $("#intexts .text"),
+                    texts = $("#intexts .text, #assunto-1, #slide_text, #assunto-2 .text"),
                     body = $("body"),
                     header_and_footer = $(".header, .footer, .footer-down, .header-down"),
                     header = $(".header"),
@@ -220,13 +220,13 @@
                     header_and_footer.css("color", colors.c1);
                     header.css("box-shadow", colors.shadow1);
                     footer.css("box-shadow", colors.shadow2);
-                    texts.css("color", colors.c2);
+                    texts.css("color", colors.c1);
                     logo.css("color", colors.c1);
                     centralbox.css("background-color", colors.c2);
-                    assunto1.css("color", colors.c1);
+                    //assunto1.css("color", colors.c1);
                     about.css("color", colors.c1);
                     nav.css("color", colors.c1);
-                    $("#assunto-2 .text").css("color", colors.c2);
+                    //$("#assunto-2 .text").css("color", colors.c2);
                     body.css("background", colors.background);
                 }
 
