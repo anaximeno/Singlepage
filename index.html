@@ -79,6 +79,7 @@
                 </div>
 
                 <script>
+                    $("#slide_text").hide();
                     var slides = [
                         {
                             src: "imagens/african.png",
@@ -97,11 +98,12 @@
                             text: "Blue Pacamano from arch"
                         }
                     ];
-                    $("#slide_text").hide();
-                    var slideshow = new SlideShower(slides, 8000, {image: 'slide_img', text: 'slide_text', num: 'slide_img'});
+                    var sleep_time = 8000,
+                        image_id_refs = {image: 'slide_img', text: 'slide_text', num: 'slide_img'};
+
+                    var slideshow = new SlideShower(slides, sleep_time, image_id_refs);
                     slideshow.animate_slides();
-                </script> 
-                
+                </script>
 
                 <div id="assunto-1">
                     <h2>THE FIRST THING IS THINGeST!</h2>
