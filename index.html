@@ -26,7 +26,7 @@
                 .next{
                     right: 0;
                 }
-                #sun-moon {
+                #theme-icon {
                     top: 1px;
                     right: 1%;
                 }
@@ -44,7 +44,7 @@
                 #logo{
                     text-align: center;
                 }
-                #sun-moon {
+                #theme-icon {
                     top: 10px;
                     right: 2%;
                 }
@@ -65,7 +65,7 @@
                         <a href="#about">Sobre</a>
                     </div>
                 </div>
-                <img id="sun-moon" src="imagens/sun.svg" alt="sun" title="Change Day/Night mode" srcset="">
+                <img id="theme-icon" src="imagens/sun.svg" alt="sun" title="Change Day/Night mode" srcset="">
             </div>
             <!--body of the page-->
             <div class="fullbody">
@@ -79,7 +79,7 @@
                 </div>
 
                 <script>
-                    $("#slide_text").hide();
+                    $("#slide_text, #slide_num").hide();
                     var slides = [
                         {
                             src: "imagens/african.png",
@@ -97,11 +97,15 @@
                             src: "imagens/archpacman.png",
                             text: "Blue Pacamano from arch"
                         }
-                    ];
-                    var sleep_time = 8000,
-                        image_id_refs = {image: 'slide_img', text: 'slide_text', num: 'slide_img'};
+                    ]
 
-                    var slideshow = new SlideShower(slides, sleep_time, image_id_refs);
+                    var image_id_refs = {
+                            image: 'slide_img', 
+                            text: 'slide_text', 
+                            num: 'slide_num'};
+                    var sleep_time = 8000;
+                    const slideshow = new SlideShower(slides, sleep_time, image_id_refs);
+
                     slideshow.animate_slides();
                 </script>
 
@@ -130,7 +134,7 @@
                     </div>
                 </div>
                 <div id="assunto-2">
-                    <img id="slide_src" src="imagens/jimbei.jpeg" alt="Jimbei">
+                    <img src="imagens/jimbei.jpeg" alt="Jimbei">
                 </div>
                 <div id="about">
                     <h2>WHAT ABOUT ONE GLASS OF WHATEVER?</h2>
@@ -170,94 +174,56 @@
             </div>
             <div class="footer-down s-20">
                 <div class="footer">
-                    A Single Page made by: Anaxímeno Brito &copy; 2020 - 2021 
+                    Copyright &copy; by Anaxímeno Brito 2020 - 2021 
                 </div>
             </div>
         </div>
         <script>
             /* New Slide functions */
-            $(document).ready(() => {
+            $(document).ready(() => {                
+                var item_refs = {
+                    theme_icon: '#theme-icon',
+                    texts: '#logo, #intexts .text, #assunto-1, #slide_text, #about, .nav, \
+                    .header, .footer, .footer-down, .header-down, #assunto-2',
+                    back01: 'body',
+                    back02: '.fullbody',
+                    back03: '.header, .footer, .footer-down, .header-down',
+                    shadow01: '.header',
+                    shadow02: '.footer'
+                }  
+                var dark_colors = {
+                    texts: "#fff",
+                    back01: "#101010",
+                    back02: "#191919",
+                    back03: "#121212",
+                    shadow01: "2px -1px 19px 9px rgba(0,0,0,0.9)",
+                    shadow02: "2px 4px 19px 9px rgba(0,0,0,0.9)"
+                }
+                var light_colors = {
+                    texts: "#191919",
+                    back01: "#fff",
+                    back02: "#fff",
+                    back03: "#fff",
+                    shadow01: "none",
+                    shadow02: "none"
+                }
+
+                const theme_mode = new ThemeMode(item_refs, dark_colors, light_colors, is_day);
+                var theme_icon = $('#theme-icon');
                 var d = new Date(),
                     hour = d.getHours(),
-                    day = (hour >= 18 || hour < 6) ? false : true;
+                    is_day = (hour >= 18 || hour < 6) ? false : true;
 
-                // TODO: change this animations with css div changer
-                var logo = $('#logo'),
-                    centralbox = $(".fullbody"),
-                    nav = $(".nav"),
-                    assunto1 = $("#assunto-1, #slide_text"),
-                    about = $("#about"),
-                    texts = $("#intexts .text, #assunto-1, #slide_text, #assunto-2 .text"),
-                    body = $("body"),
-                    header_and_footer = $(".header, .footer, .footer-down, .header-down"),
-                    header = $(".header"),
-                    footer = $(".footer"),
-                    sun_moon = $('#sun-moon');
-
-
-                if (!day) {
-                    sun_moon.attr('src', 'imagens/moon.svg');
-                    nightMode();      
+                if (!is_day) {
+                    theme_icon.attr('src', 'imagens/moon.svg');
+                    theme_mode.goto_dark_mode();
                 }
 
-
-                sun_moon.click(async () => {
-                    gsap.to('#sun-moon', {duration: .15, opacity: 0});
-                    gsap.to('#sun-moon', {duration: .19, x: "50px", y: "-50px", ease: "circ.out"});
-
-                    await sleep(180);
-                    sun_moon.attr('src', day ? 'imagens/moon.svg' : 'imagens/sun.svg');
-
-                    gsap.to('#sun-moon', {duration: .17, opacity: 1, delay: 0.19});
-                    gsap.to('#sun-moon', {duration: .19, x: "0px", y: "0px", delay: 0.19, ease: "circ.out"});
-
-                    await sleep(190);
-                    day = day ? nightMode() : dayMode();
+                $('#theme-icon').click(async () => {
+                    theme_mode.change_mode();
                 });
-
-
-                function change_colors(colors)
-                {
-                    header_and_footer.css("background-color", colors.c3);
-                    header_and_footer.css("color", colors.c1);
-                    header.css("box-shadow", colors.shadow1);
-                    footer.css("box-shadow", colors.shadow2);
-                    texts.css("color", colors.c1);
-                    logo.css("color", colors.c1);
-                    centralbox.css("background-color", colors.c2);
-                    //assunto1.css("color", colors.c1);
-                    about.css("color", colors.c1);
-                    nav.css("color", colors.c1);
-                    //$("#assunto-2 .text").css("color", colors.c2);
-                    body.css("background", colors.background);
-                }
-
-
-                function nightMode()
-                {
-                    change_colors({
-                        c1: "#fff",
-                        c2: "#191919",
-                        c3: "#121212",
-                        background: "#101010",
-                        shadow1: "2px -1px 19px 9px rgba(0,0,0,0.9)",
-                        shadow2: "2px 4px 19px 9px rgba(0,0,0,0.9)"});
-                    return false;
-                }
-
-
-                function dayMode()
-                {
-                    change_colors({
-                        c1: "#191919",
-                        c2: "#fff",
-                        c3: "#fff",
-                        background: "#fff",
-                        shadow1: "none",
-                        shadow2: "none"});
-                    return true;
-                }
             });
+
         </script>
     </body>
 </html>
