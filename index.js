@@ -8,21 +8,28 @@ class SlideShower
 {
     constructor(slides, changetime, reference)
     {
-    this.slides = slides;
-    this.changetime = changetime;
-    this.ref = reference;
-    this.current_index = 0;
-    this.go_next = () => {
+        this.slides = slides;
+        this.changetime = changetime;
+        this.ref = reference;
+        this.current_index = 0;
+    }
+
+    go_next()
+    {
         this.current_index++;
         if (this.current_index < 0 || this.current_index >= this.slides.length)
             this.current_index = 0;
-    };
-    this.go_prev = () => {
+    }
+
+    go_prev()
+    {
         this.current_index--;
         if (this.current_index < 0 || this.current_index >= this.slides.length)
             this.current_index = this.slides.length - 1;
-    };
-    this.show = () => {
+    }
+
+    show()
+    {
         var slide_img = document.getElementById(this.ref.image);
         var slide_text = document.getElementById(this.ref.text);
         var slide_num = document.getElementById(this.ref.num);
@@ -31,14 +38,15 @@ class SlideShower
         slide_text.innerHTML = this.slides[this.current_index].text;
         slide_num.innerHTML = (this.current_index+1) + '/' + this.slides.length;
         this.go_next();
-    };
-    this.animate_slides = async () => {
+    }
+
+    async animate_slides ()
+    {
         do {
             this.show();
             await sleep(this.changetime);
         } while (true);
     };
-    }
 }
 
 
