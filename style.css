@@ -40,9 +40,14 @@ body{
     color: #232323;
 }
 #logo{
-    color: #232323;
+    /*
     text-shadow: 1px 0.5px 0px orangered,
-    -1px 0.5px 0px #ffd000;
+                -1px 0.5px 0px #ffd000;
+    */
+    color: #232323;
+    text-shadow: 0px 1.5px 4px #007bff,
+                -1.5px 0px 4px #00cc00,
+                 1.5px -1.5px 4px #dc3545;
     font-size: 2.5em;
     padding-left: 5px;
     font-family: 'Balsamiq Sans', cursive;
@@ -89,8 +94,9 @@ body{
 }
 .nav a:hover{
     font-weight: bolder;
-    text-shadow: 1px 1px red,
-    			-1px 1px yellow;
+    text-shadow: 0px 1.5px 3px #007bff,
+                -1.5px 0px 3px #00cc00,
+                 1.5px -1.5px 3px #dc3546;
 }
 h2{
     text-align: center;
@@ -149,12 +155,17 @@ img {
     z-index: 1;
     opacity: 0.8;
 }
-
 #theme-icon:hover {
     opacity: 1;
     cursor: pointer;
 }
-
 .text {
     padding: 10px;
+}
+#slide-num {
+    display: inline-block;
+    text-align: center;
+}
+.button:hover {
+    cursor: pointer;
 }
