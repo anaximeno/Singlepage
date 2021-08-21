@@ -63,7 +63,7 @@ class ThemeMode
     const item_refs = {
         theme_icon: '#theme-icon',
         texts: '#logo, .text, #assunto-1, #about, .nav, \
-        .header, .footer, .footer-down, .header-down, #assunto-2',
+        .header, .footer, .footer-down, .header-down, #assunto-2, button',
         back01: 'body',
         back02: '.fullbody',
         back03: '.header, .footer, .footer-down, .header-down',

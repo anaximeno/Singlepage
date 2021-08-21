@@ -76,6 +76,12 @@ body{
 .footer-down, .header-down, .header, .footer{
     background-color: #fefefe;
 }
+.footer a {
+    color: inherit;
+}
+.footer a:hover {
+    opacity: 0.6;
+}
 .nav{
     display: flex;
     flex-direction: row;
@@ -162,10 +168,23 @@ img {
 .text {
     padding: 10px;
 }
-#slide-num {
+.slides .text {
     display: inline-block;
     text-align: center;
 }
 .button:hover {
     cursor: pointer;
+}
+#slide-buttons {
+    display: flex;
+    justify-content: center;
+}
+#slide-buttons button {
+    width: 50%;
+    background-color: #ffffff00;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+}
+#slide-buttons button:hover {
+    opacity: 0.6;
 }
