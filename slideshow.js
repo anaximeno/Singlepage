@@ -58,18 +58,21 @@ const hidePreviousIndex = () => {
 (function (){
     const nextBtn = $('#next-btn');
     const prevBtn = $('#prev-btn');
+
     nextBtn.click(() => {
         hidePreviousIndex();
         $(slidesID[currentIndex]).hide();
         currentIndex = nextSlideIndex();
         showCurrentIndex();
         slideChanged = true;
-    })
+    });
+
     prevBtn.click(() => {
         $(slidesID[currentIndex]).hide();
         currentIndex = prevSlideIndex();
         showCurrentIndex();
         slideChanged = true;
     });
+
     runSlideshow();
 })();
