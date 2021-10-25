@@ -1,8 +1,7 @@
 let currentIndex = 0;
 let slideChanged = false;
-// Miliseconds for waiting before change slides
-const CHANGE_TIME = 7500;
-const slidesID = $('.slides').children();
+const CHANGE_SLIDE_TIME_INTERVAL = 6000;
+const SLIDESID = $('.slides').children();
 
 
 const sleep = (ms) => {
@@ -12,7 +11,7 @@ const sleep = (ms) => {
 
 const nextSlideIndex = () => {
     nIndex = currentIndex+1;
-    if (nIndex < 0 || nIndex >= slidesID.length)
+    if (nIndex < 0 || nIndex >= SLIDESID.length)
         nIndex = 0;
     return nIndex;
 }
@@ -20,8 +19,8 @@ const nextSlideIndex = () => {
 
 const prevSlideIndex = () => {
     pIndex = currentIndex-1;
-    if (pIndex < 0 || pIndex >= slidesID.length)
-        pIndex = slidesID.length-1;
+    if (pIndex < 0 || pIndex >= SLIDESID.length)
+        pIndex = SLIDESID.length-1;
     return pIndex;
 }
 
@@ -45,12 +44,12 @@ const runSlideshow = async (changeTime = 6500) => {
 
 
 const showCurrentIndex = () => {
-    const currentSlide = $(slidesID[currentIndex]);
+    const currentSlide = $(SLIDESID[currentIndex]);
     currentSlide.show();
 }
 
 const hidePreviousIndex = () => {
-    const prevSlide = $(slidesID[prevSlideIndex()]);
+    const prevSlide = $(SLIDESID[prevSlideIndex()]);
     prevSlide.hide();
 }
 
@@ -61,18 +60,18 @@ const hidePreviousIndex = () => {
 
     nextBtn.click(() => {
         hidePreviousIndex();
-        $(slidesID[currentIndex]).hide();
+        $(SLIDESID[currentIndex]).hide();
         currentIndex = nextSlideIndex();
         showCurrentIndex();
         slideChanged = true;
     });
 
     prevBtn.click(() => {
-        $(slidesID[currentIndex]).hide();
+        $(SLIDESID[currentIndex]).hide();
         currentIndex = prevSlideIndex();
         showCurrentIndex();
         slideChanged = true;
     });
 
-    runSlideshow();
+    runSlideshow(CHANGE_SLIDE_TIME_INTERVAL);
 })();
