@@ -164,7 +164,7 @@ img {
     max-width: 100%;
 }
 
-#theme-icon {
+.icon {
     width: 30px;
     position: fixed;
     top: 10px;
@@ -172,7 +172,7 @@ img {
     z-index: 1;
     opacity: 0.8;
 }
-#theme-icon:hover {
+.icon {
     opacity: 1;
     cursor: pointer;
 }

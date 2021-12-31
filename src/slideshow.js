@@ -1,6 +1,6 @@
 let currentIndex = 0;
 let slideChanged = false;
-const CHANGE_SLIDE_TIME_INTERVAL = 6000;
+const CHANGE_SLIDE_TIME_INTERVAL = 6500;
 const SLIDESID = $('.slides').children();
 
 
