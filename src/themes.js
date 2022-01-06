@@ -1,4 +1,4 @@
-let lightModeEnabled = true;
+let lightModeEnabled;
 
 const MOON = Symbol("moon");
 const SUN = Symbol("sun");
@@ -119,12 +119,18 @@ const changeMode = async (animate = true, sleepTime = 200) => {
 }
 
 
-(function run (msg) {
-    const icon = $(".icon");
+(function init () {
+    $('.icon').click(async () => {
+        changeMode();
+    });
 
-    if (isDayTime() === false)
-        changeMode(false);
-
-    icon.click(async () => { changeMode(); });
-    console.log(msg);
-})("Single Page");
+    window.addEventListener('load', () => {
+        if (isDayTime() === false) {
+            changeIconTo(MOON);
+            darkMode();
+        } else {
+            changeIconTo(SUN);
+            lightMode();
+        }
+    });
+})();
