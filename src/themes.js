@@ -120,7 +120,7 @@ const changeMode = async (animate = true, sleepTime = 200) => {
 
 
 (function init () {
-    $('.icon').click(async () => {
+    $('.icon').click(() => {
         changeMode();
     });
 
