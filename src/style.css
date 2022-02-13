@@ -108,12 +108,12 @@ body{
 }
 .nav a:hover{
     font-weight: bolder;
-    text-shadow: 0px 1.5px 3px #007bff,
-                -1.5px 0px 3px #00cc00,
-                 1.5px -1.5px 3px #dc3546,
-                 0px 1.5px 3px #007bff,
-                -1.5px 0px 3px #00cc00,
-                 1.5px -1.5px 3px #dc3546;
+    text-shadow: 0px 1.5px 1.5px #007bff,
+                -1.5px 0px 1.5px #00cc00,
+                 1.5px -1.5px 1.5px #dc3546,
+                 0px 1.5px 1.5px #007bff,
+                -1.5px 0px 1.5px #00cc00,
+                 1.5px -1.5px 1.5px #dc3546;
 }
 h2{
     text-align: center;
