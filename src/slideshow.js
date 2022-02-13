@@ -9,6 +9,65 @@ const sleep = (ms) => {
 }
 
 
+class Node {
+    prev = undefined;
+    next = undefined;
+
+    constructor(slide) {
+        this.slide = slide;
+    }
+
+    setPrev = (node) => this.prev = node;
+    setNext = (node) => this.next = node;
+}
+
+
+class CircularDoublyLinkedList {
+    head = undefined;
+    constructor(slides) {
+        slides.forEach(slide => {
+            this.insert(slide);
+        });
+    }
+
+    // The only method created is insert,
+    // since it is the only one needed.
+
+    insert(slide) {
+        if (this.head === undefined) {
+            this.head = new Node(slide);
+        } else {
+            for (node = this.head ; node.next != undefined ; node = node.next) ;
+            node.setNext(new Node(slide));
+            node.next.setPrev(node);
+            node.next.setNext(this.head);
+            this.head.setPrev(node.next);
+        }
+    }
+}
+
+
+class Slideshow {
+    currentIndex = 0;
+    prevIndex = 0;
+    slideWasChanged = false;
+	constructor(slides, timeInterval) {
+		this.slides = 
+		this.time = timeInterval;
+	}
+
+	goToTheRightSlideIndex() {
+		this.prevIndex = this.currentIndex;
+		this.currentIndex = (this.prevIndex + 1) % this.slides.length;
+	}
+
+	goToTheLeftSlideIndex() {
+		this.prevIndex = this.currentIndex;
+		this.currentIndex = this.prevIndex > 0 ? this.prevIndex - 1 : this.slide.length;
+	}
+}
+
+
 const nextSlideIndex = () => {
     nIndex = currentIndex+1;
     if (nIndex < 0 || nIndex >= SLIDESID.length)
@@ -59,9 +118,9 @@ const hidePreviousIndex = () => {
     const prevBtn = $('#prev-btn');
 
     nextBtn.click(() => {
-        hidePreviousIndex();
-        $(SLIDESID[currentIndex]).hide();
+        // $(SLIDESID[currentIndex]).hide();
         currentIndex = nextSlideIndex();
+        hidePreviousIndex();
         showCurrentIndex();
         slideChanged = true;
     });
@@ -72,6 +131,6 @@ const hidePreviousIndex = () => {
         showCurrentIndex();
         slideChanged = true;
     });
-
+    console.log(new CircularDoublyLinkedList(SLIDESID));
     runSlideshow(CHANGE_SLIDE_TIME_INTERVAL);
 })();
