@@ -39,7 +39,7 @@ const runSlideshow = async (changeTime = 6500) => {
         slideChanged = false;
 
     // Recusive call
-    runSlideshow();
+    runSlideshow(changeTime);
 }
 
 
