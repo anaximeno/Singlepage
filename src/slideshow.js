@@ -1,136 +1,145 @@
-let currentIndex = 0;
-let slideChanged = false;
-const CHANGE_SLIDE_TIME_INTERVAL = 6500;
-const SLIDESID = $('.slides').children();
-
-
 const sleep = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
 class Node {
-    prev = undefined;
     next = undefined;
+    prev = undefined;
+    value = undefined;
 
-    constructor(slide) {
-        this.slide = slide;
+    constructor(value) {
+        this.value = value;
     }
 
-    setPrev = (node) => this.prev = node;
-    setNext = (node) => this.next = node;
-}
-
-
-class CircularDoublyLinkedList {
-    head = undefined;
-    constructor(slides) {
-        slides.forEach(slide => {
-            this.insert(slide);
-        });
+    static valorize(value) {
+        return value !== Node ? new Node(value) : value;
     }
 
-    // The only method created is insert,
-    // since it is the only one needed.
-
-    insert(slide) {
-        if (this.head === undefined) {
-            this.head = new Node(slide);
+    addNext(value) {
+        value = Node.valorize(value);
+        if (this.next !== undefined) {
+            let node = this.next;
+            value.prev = this;
+            value.next = node;
+            this.next = value;
+            node.prev = value;
         } else {
-            for (node = this.head ; node.next != undefined ; node = node.next) ;
-            node.setNext(new Node(slide));
-            node.next.setPrev(node);
-            node.next.setNext(this.head);
-            this.head.setPrev(node.next);
+            value.prev = this;
+            this.next = value;
+        }
+    }
+
+    addPrev(value) {
+        value = Node.valorize(value);
+        if (this.prev !== undefined) {
+            let node = this.prev;
+            value.next = this;
+            value.prev = node;
+            this.prev = value;
+            node.next = value;
+        } else {
+            value.next = this; 
+            this.prev = value;
         }
     }
 }
 
 
-class Slideshow {
-    currentIndex = 0;
-    prevIndex = 0;
-    slideWasChanged = false;
-	constructor(slides, timeInterval) {
-		this.slides = 
-		this.time = timeInterval;
+class SlideShower {
+    firstSlide = undefined;
+    lastSlide = undefined;
+    currentSlide = undefined;
+    slides = undefined;
+    __slideWasChanged = false;
+
+	constructor(slides, timeInterval = 6500) {
+        this.slides = slides;
+        this.interval = timeInterval;
+        let slide;
+        for (let i = 0 ; i < this.slides.length ; ++i) {
+            slide = $(this.slides[i]);
+            slide.hide();
+            this.addSlide(slide);
+        }
 	}
 
-	goToTheRightSlideIndex() {
-		this.prevIndex = this.currentIndex;
-		this.currentIndex = (this.prevIndex + 1) % this.slides.length;
-	}
+    addSlide(slide) {
+        if (this.firstSlide === undefined) {
+            this.firstSlide = new Node(slide);
+            this.lastSlide = this.firstSlide;
+            // Only show the first slide initially
+            this.firstSlide.value.show();
+            this.currentSlide = this.firstSlide;
+        } else {
+            // Append the new slide at the end
+            let node = this.lastSlide;
+            node.addNext(slide);
+            this.lastSlide = node.next;
+        }
+    }
 
-	goToTheLeftSlideIndex() {
-		this.prevIndex = this.currentIndex;
-		this.currentIndex = this.prevIndex > 0 ? this.prevIndex - 1 : this.slide.length;
-	}
+    goToTheNextSlide() {
+        this.currentSlide = this.currentSlide.next !== undefined ?
+            this.currentSlide.next : this.firstSlide;
+    }
+
+    goToThePrevSlide() {
+        this.currentSlide = this.currentSlide.prev !== undefined ?
+            this.currentSlide.prev : this.lastSlide;
+    }
+
+    hideCurrentSlide() {
+        this.currentSlide.value.hide();
+    }
+
+    showCurrentSlide() {
+        this.currentSlide.value.show();
+    }
+
+    showNextSlide() {
+        this.hideCurrentSlide();
+        this.goToTheNextSlide();
+        this.showCurrentSlide();
+    }
+
+    showPrevSlide() {
+        this.hideCurrentSlide();
+        this.goToThePrevSlide();
+        this.showCurrentSlide();
+    }
+
+    async run() {
+        while (true) {
+            await sleep(this.interval);
+            if (!this._slideChangeNoticed()) {
+                this.showNextSlide();
+            } else continue;
+        }
+    }
+
+    _slideChangeNoticed() {
+        if (this.__slideWasChanged) {
+            this.__slideWasChanged = false;
+            return true;
+        } else return false;
+    }
 }
 
 
-const nextSlideIndex = () => {
-    nIndex = currentIndex+1;
-    if (nIndex < 0 || nIndex >= SLIDESID.length)
-        nIndex = 0;
-    return nIndex;
-}
+(() => {
+    const SLIDES = $('.slides').children().toArray();
+    const slideshow = new SlideShower(SLIDES, 6500);
 
-
-const prevSlideIndex = () => {
-    pIndex = currentIndex-1;
-    if (pIndex < 0 || pIndex >= SLIDESID.length)
-        pIndex = SLIDESID.length-1;
-    return pIndex;
-}
-
-
-const runSlideshow = async (changeTime = 6500) => {
-    hidePreviousIndex();
-    showCurrentIndex();
-
-    // Sleep some time then show the next slide
-    await sleep(changeTime);
-    
-    // If slide was not changed go to next slide
-    if (slideChanged === false)
-        currentIndex = nextSlideIndex();
-    else
-        slideChanged = false;
-
-    // Recusive call
-    runSlideshow();
-}
-
-
-const showCurrentIndex = () => {
-    const currentSlide = $(SLIDESID[currentIndex]);
-    currentSlide.show();
-}
-
-const hidePreviousIndex = () => {
-    const prevSlide = $(SLIDESID[prevSlideIndex()]);
-    prevSlide.hide();
-}
-
-
-(function (){
-    const nextBtn = $('#next-btn');
-    const prevBtn = $('#prev-btn');
-
-    nextBtn.click(() => {
-        // $(SLIDESID[currentIndex]).hide();
-        currentIndex = nextSlideIndex();
-        hidePreviousIndex();
-        showCurrentIndex();
-        slideChanged = true;
+    $('#next-btn').click(() => {
+        slideshow.showNextSlide();
+        slideshow.__slideWasChanged = true;
     });
 
-    prevBtn.click(() => {
-        $(SLIDESID[currentIndex]).hide();
-        currentIndex = prevSlideIndex();
-        showCurrentIndex();
-        slideChanged = true;
+    $('#prev-btn').click(() => {
+        slideshow.showPrevSlide();
+        slideshow.__slideWasChanged = true;
     });
-    console.log(new CircularDoublyLinkedList(SLIDESID));
-    runSlideshow(CHANGE_SLIDE_TIME_INTERVAL);
+
+    slideshow.run();
 })();
