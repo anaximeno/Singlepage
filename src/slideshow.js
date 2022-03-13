@@ -53,7 +53,7 @@ class SlideShower {
     slides = undefined;
     __slideWasChanged = false;
 
-	constructor(slides, timeInterval = 6500) {
+    constructor(slides, timeInterval = 6500) {
         this.slides = slides;
         this.interval = timeInterval;
         let slide;
@@ -62,7 +62,7 @@ class SlideShower {
             slide.hide();
             this.addSlide(slide);
         }
-	}
+    }
 
     addSlide(slide) {
         if (this.firstSlide === undefined) {
