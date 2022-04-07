@@ -128,8 +128,8 @@ class SlideShower {
 
 
 (() => {
-    const SLIDES = $('.slides').children().toArray();
-    const slideshow = new SlideShower(SLIDES, 6500);
+    const slides = $('.slides').children().toArray();
+    const slideshow = new SlideShower(slides, 6500);
 
     $('#next-btn').click(() => {
         slideshow.showNextSlide();
