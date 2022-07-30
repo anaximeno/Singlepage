@@ -12,12 +12,12 @@ class Node {
         this.value = value;
     }
 
-    static valorize(value) {
-        return value !== Node ? new Node(value) : value;
+    static instantiate(value) {
+        return typeof(value) !== Node ? new Node(value) : value;
     }
 
     addNext(value) {
-        value = Node.valorize(value);
+        value = Node.instantiate(value);
         if (this.next !== undefined) {
             let node = this.next;
             value.prev = this;
@@ -31,7 +31,7 @@ class Node {
     }
 
     addPrev(value) {
-        value = Node.valorize(value);
+        value = Node.instantiate(value);
         if (this.prev !== undefined) {
             let node = this.prev;
             value.next = this;
@@ -39,7 +39,7 @@ class Node {
             this.prev = value;
             node.next = value;
         } else {
-            value.next = this; 
+            value.next = this;
             this.prev = value;
         }
     }
@@ -68,7 +68,6 @@ class SlideShower {
         if (this.firstSlide === undefined) {
             this.firstSlide = new Node(slide);
             this.lastSlide = this.firstSlide;
-            // Only show the first slide initially
             this.firstSlide.value.show();
             this.currentSlide = this.firstSlide;
         } else {

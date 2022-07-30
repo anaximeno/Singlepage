@@ -89,6 +89,7 @@ const lightMode = () => {
 
 const changeMode = async (animate = true, sleepTime = 200) => {
     const iconClass = '.icon';
+
     if (animate === true) {
         gsap.to(iconClass, {
             duration: .15,
